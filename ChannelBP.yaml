@@ -1,0 +1,4 @@
+- from:
+    uri: "knative:channel/bloodpressure"
+    steps:
+      - log: "--> BP ${body}"

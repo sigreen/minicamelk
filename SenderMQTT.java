@@ -5,18 +5,18 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 
 public class SenderMQTT extends RouteBuilder {
 
-  
+
   @Override
   public void configure() throws Exception {
 
     JacksonDataFormat jacksonDataFormat = new JacksonDataFormat();
     jacksonDataFormat.setUnmarshalType(SingalInput.class);
-    
+
 
     from("timer:tick?fixedRate=true&period=2000")
       .setBody(method(this, "genRandoSingalInput()"))
       .marshal(jacksonDataFormat)
-      .to("mqtt:singal?host=tcp://broker-amq-mqtt.usecase.svc:1883&userName=amq&password=password&publishTopicName=mytopic");
+      .to("mqtt:singal?host=tcp://broker-amq-mqtt:1883&userName=amq&password=password&publishTopicName=mytopic");
   }
 
   public static SingalInput genRandoSingalInput(){

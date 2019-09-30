@@ -5,15 +5,15 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 
 public class SenderChannels extends RouteBuilder {
 
-  private static final String STREAMS_URL = "my-cluster-kafka-bootstrap.usecase.svc:9092";
-  
-  
+  private static final String STREAMS_URL = "my-cluster-kafka-bootstrap:9092";
+
+
   @Override
   public void configure() throws Exception {
 
     JacksonDataFormat jacksonDataFormat = new JacksonDataFormat();
     jacksonDataFormat.setUnmarshalType(SingalInput.class);
-    
+
     from("kafka:my-topic?brokers="+STREAMS_URL)
     .throttle(1)
     .unmarshal(jacksonDataFormat)
@@ -34,7 +34,7 @@ public class SenderChannels extends RouteBuilder {
 
   }
 
-  
+
 
   public static class SingalInput {
 
