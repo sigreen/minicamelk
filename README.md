@@ -1,7 +1,5 @@
 # Simple Camel K demo
 
-Make sure you have installed KNative on OpenShift
-
 1. Create a new project called `camel-k-bp`.
 2. Deploy Camel K operator into the `camel-k-bp` project using the Operator UI, making sure you create an integration platform and deploy the example integration successfully.  Make sure you wait 5-10 minutes since this items can take a while to install.
 3. Ensure the `Knative Eventing Operator`, `Knative Apache Kafka Operator`, `Knative Apache Camel Operator` and `Knative Serving Operator` are installed to the `camel-k-bp` project
