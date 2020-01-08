@@ -1,8 +1,8 @@
 # Simple Camel K demo
 
 1. Create a new project called `camel-k-bp`.
-2. Deploy Camel K operator into the `camel-k-bp` project using the Operator UI, making sure you create an integration platform and deploy the example integration successfully.  Make sure you wait 5-10 minutes since this items can take a while to install.
-3. Ensure the `Knative Eventing Operator`, `Knative Apache Kafka Operator`, `Knative Apache Camel Operator` and `Knative Serving Operator` are installed to the `camel-k-bp` project
+2. Deploy Camel K (Community) operator into the `camel-k-bp` project using the Operator UI, making sure you create an integration platform and deploy the example integration successfully.  Make sure you wait 5-10 minutes since this items can take a while to install.
+3. Ensure the `OpenShift Serverless Operator`is installed to the `camel-k-bp` project
 4. Setup Blood Pressure
 ```
 oc create -f bp-channel.yaml
@@ -34,7 +34,7 @@ kamel run -d camel-jackson -d camel-kafka SenderChannels.java
 ```
 10. Run the integration that moves MQTT streams to Kafka
 ```
-kamel run -d camel-kafka -d camel-kafka -d camel-mqtt ReceiverMQTT.java
+kamel run -d camel-kafka -d camel-kafka -d camel-paho ReceiverMQTT.java
 ```
 11. Run the listener to Blood Pressure Signal
 ```
@@ -52,5 +52,5 @@ kamel run ChannelHR.yaml
 
 14. Run the simulator that sends MQTT signal
 ```
-kamel run -d camel-jackson -d camel-mqtt SenderMQTT.java
+kamel run -d camel-jackson -d camel-paho -d camel-bean SenderMQTT.java
 ```

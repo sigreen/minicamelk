@@ -12,7 +12,7 @@ public class ReceiverMQTT extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 
-    from("mqtt:demo?subscribeTopicName=mytopic&userName=amq&password=password&host="+BROKER_URL)
+    from("paho:mytopic?userName=amq&password=password&brokerUrl="+BROKER_URL)
     .log("From MQTT --- ${body}")
     .to("kafka:my-topic?brokers="+STREAMS_URL);
   }
