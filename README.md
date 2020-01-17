@@ -2,7 +2,8 @@
 
 1. Create a new project called `camel-k-bp`.
 2. Deploy Camel K (Community) operator into the `camel-k-bp` project using the Operator UI, making sure you create an integration platform and deploy the example integration successfully.  Make sure you wait 5-10 minutes since this items can take a while to install.
-3. Ensure the `OpenShift Serverless Operator`is installed to the `camel-k-bp` project
+3. Ensure the `OpenShift Serverless Operator`, `Knative Eventing Operator`, `
+Knative Apache Kafka Operator`, and `Knative Apache Camel Operator` are installed to the `camel-k-bp` project, then create both an 'Knative Serving' and 'Knative Eventing' API.
 4. Setup Blood Pressure
 ```
 oc create -f bp-channel.yaml
